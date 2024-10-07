@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays</title>
+    <script>
+      let data = [1, 7, 24, 5, 67, 2, 0, 11, 41, 8, 12, 10];
+      //   for (let i = 0; i < data.length; i++) {
+      //     document.write(`Array ${i} is: ${data[i]} <br/>`);
+      //   }
+      //   let x = 3;
+      //   document.write(`Arrays ${x} element is: ${data[x]}`);
+      function getElement() {
+        let element = document.getElementById("element").value;
+        if (
+          element < data.length &&
+          element >= 0 &&
+          typeof parseInt(element) === "number"
+        ) {
+          alert(data[element]);
+        } else {
+          alert("Enter a valid Index");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="element" />
+    <button onclick="getElement()">Get Element</button>
+  </body>
+</html>
