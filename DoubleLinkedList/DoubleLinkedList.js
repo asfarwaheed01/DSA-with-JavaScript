@@ -32,4 +32,97 @@ class DoblyLinkedList{
         current.next = newNode;
         newNode.prev = current
     }
+
+    size(){
+        let count = 0;
+        while(this.head && this.head.next){
+            count+=1;
+            this.head = this.head.next;
+        }
+        return count;
+    }
+    addAt(index,data){
+        if(index<0 && index>this.size()){
+            console.error("Invalid Index")
+        }
+        const newNode = new Node(data);
+        if(index === 0){
+            newNode.next = this.head;
+            if(this.head){
+                this.head.prev = newNode
+            }
+            this.head = newNode;
+        }
+        let current =  this.head
+        for(let i = 0; i<index-1; i++){
+            current = current.next
+        }
+        newNode.prev = current
+        newNode.next = current.next
+        if(current.next){
+            current.next.prev = newNode
+        }
+        current.next = newNode
+    }
+    removeFirst(){
+        if(!this.head){
+            return;
+        }
+        this.head = this.head.next
+        if(this.head){
+            this.head.prev = null;
+        }
+    }
+    removeLast(){
+        if(!this.head){
+            return;
+        }
+        if(!this.head.next){
+            this.head = null;
+            return
+        }
+        let current = this.head;
+        while(current.next.next){
+            current = current.next
+        }
+        current.next = null
+
+    }
+    removeAt(index){
+        if(index<0 && index>this.size()){
+            console.error("Invalid Index")
+        }
+        if(index === 0){
+            this.head = this.head.next;
+            if(this.head){
+                this.head.prev = null;
+            }
+        }
+        let current =  this.head
+        for(let i = 0; i<index; i++){
+            current = current.next
+        }
+        if(current.next){
+            current.next = current.next.next;
+            if(current){
+                current.next.prev = current
+            }
+        }
+    }
+    print(){
+        let current = this.head;
+        while(current){
+            console.log(current.data)
+            current = current.next;
+        }
+    }
 }
+
+const obj = new DoblyLinkedList();
+obj.addFirst(5);
+obj.addFirst(1);
+obj.addFirst(2);
+obj.addAt(3,10)
+// obj.removeAt(2);
+obj.print();
+// console.log(obj.size());
