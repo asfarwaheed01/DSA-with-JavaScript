@@ -11,7 +11,18 @@ var FindStudents = function(students,student){
     }
 }
 
+const findStudent = (students, student) =>{
+    for (let i = 0; i<students.length; i++){
+        if(students[i] === student){
+            return student
+        }else{
+            return -1
+        }
+    }
+}
+
 const students = ["Ali", "Asfar", "Asjad", "hero", "World"];
 const student = "Ali"
 
 console.log(FindStudents(students,student));
+console.log(findStudent(students,student));
