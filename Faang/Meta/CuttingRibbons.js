@@ -24,6 +24,8 @@ const k = 8;
 console.log(largestCut(lens, k));
 
 // Best Way
+// what you have the upper bound and the lower bounds for iterations binary search is the best option
+
 function largestCut(arr, k) {
   if (arr.length === 0 || k === 0) return 0;
 
